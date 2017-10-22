@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -28,19 +29,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         plazaIndonesia = new MarkerOptions()
                 .position(new LatLng(-6.193060, 106.821949))
-                .title("Plaza Indonesia");
+                .title("Plaza Indonesia")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
 
         grandIndonesia = new MarkerOptions()
                 .position(new LatLng(-6.195150, 106.819720))
-                .title("Grand Indonesia");
+                .title("Grand Indonesia")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
 
         atriumPlaza = new MarkerOptions()
                 .position(new LatLng(-6.176898, 106.841367))
-                .title("Plaza Atrium");
+                .title("Plaza Atrium")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
 
         tamanAnggrek = new MarkerOptions()
                 .position(new LatLng(-6.178768, 106.792098))
-                .title("Taman Anggrek Mall");
+                .title("Taman Anggrek Mall")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
+
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
