@@ -5,47 +5,12 @@
     android:layout_height="match_parent"
     tools:context="id.sch.smktelkom_mlg.learn.apps1.MainActivity">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/bTelkom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="school" />
-
-            <Button
-                android:id="@+id/bMulmed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="work" />
-
-            <Button
-                android:id="@+id/bPalace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="dream" />
-        </LinearLayout>
-
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
-    </LinearLayout>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" />
 
 
 </RelativeLayout>
