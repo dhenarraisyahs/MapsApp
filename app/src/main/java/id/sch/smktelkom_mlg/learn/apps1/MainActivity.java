@@ -1,5 +1,6 @@
 package id.sch.smktelkom_mlg.learn.apps1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -8,22 +9,19 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
-    static final CameraPosition Jakarta = CameraPosition.builder()
-            .target(new LatLng(-6.186486, 106.834091))
-            .zoom(10)
+    static final CameraPosition kantor = CameraPosition.builder()
+            .target(new LatLng(-6.182419, 106.830236))
+            .zoom(15)
             .bearing(0)
             .tilt(90)
             .build();
     GoogleMap googleMap;
     boolean mapReady = false;
-    LatLng plazaIndonesia = new LatLng(-6.193060, 106.821949);
-    LatLng grandIndonesia = new LatLng(-6.195150, 106.819720);
-    LatLng atriumPlaza = new LatLng(-6.176898, 106.841367);
-    LatLng tamanAnggrek = new LatLng(-6.178768, 106.792098);
+    LatLng KANTOR = new LatLng(-6.182419, 106.830236);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +38,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapReady = true;
         googleMap = map;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(Jakarta));
-        map.addPolyline(new PolylineOptions().geodesic(true)
-                .add(plazaIndonesia)
-                .add(grandIndonesia)
-                .add(atriumPlaza)
-                .add(tamanAnggrek)
-                .add(plazaIndonesia));
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(kantor));
+        map.addCircle(new CircleOptions()
+                .center(KANTOR)
+                .radius(125)
+                .strokeColor(Color.GRAY)
+                .fillColor(Color.argb(64, 0, 255, 0)));
     }
 }
