@@ -7,45 +7,28 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     static final CameraPosition Jakarta = CameraPosition.builder()
             .target(new LatLng(-6.186486, 106.834091))
-            .zoom(15)
-            .tilt(45)
+            .zoom(10)
+            .bearing(0)
+            .tilt(90)
             .build();
     GoogleMap googleMap;
     boolean mapReady = false;
-    MarkerOptions plazaIndonesia, grandIndonesia, atriumPlaza, tamanAnggrek;
+    LatLng plazaIndonesia = new LatLng(-6.193060, 106.821949);
+    LatLng grandIndonesia = new LatLng(-6.195150, 106.819720);
+    LatLng atriumPlaza = new LatLng(-6.176898, 106.841367);
+    LatLng tamanAnggrek = new LatLng(-6.178768, 106.792098);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        plazaIndonesia = new MarkerOptions()
-                .position(new LatLng(-6.193060, 106.821949))
-                .title("Plaza Indonesia")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
-
-        grandIndonesia = new MarkerOptions()
-                .position(new LatLng(-6.195150, 106.819720))
-                .title("Grand Indonesia")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
-
-        atriumPlaza = new MarkerOptions()
-                .position(new LatLng(-6.176898, 106.841367))
-                .title("Plaza Atrium")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
-
-        tamanAnggrek = new MarkerOptions()
-                .position(new LatLng(-6.178768, 106.792098))
-                .title("Taman Anggrek Mall")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_media_route_on_mono_dark));
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -57,14 +40,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapReady = true;
         googleMap = map;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        map.addMarker(grandIndonesia);
-        map.addMarker(plazaIndonesia);
-        map.addMarker(tamanAnggrek);
-        map.addMarker(atriumPlaza);
-        flyTo(Jakarta);
-    }
-
-    private void flyTo(CameraPosition target) {
-        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(Jakarta));
+        map.addPolyline(new PolylineOptions().geodesic(true)
+                .add(plazaIndonesia)
+                .add(grandIndonesia)
+                .add(atriumPlaza)
+                .add(tamanAnggrek)
+                .add(plazaIndonesia));
     }
 }
