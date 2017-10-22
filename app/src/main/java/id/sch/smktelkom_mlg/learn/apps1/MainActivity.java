@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnStreetViewPanor
     @Override
     public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
         streetViewPanorama.setPosition(KANTOR);
+        streetViewPanorama.setStreetNamesEnabled(false);
         StreetViewPanoramaCamera camera = StreetViewPanoramaCamera.builder()
                 .bearing(180)
                 .build();
